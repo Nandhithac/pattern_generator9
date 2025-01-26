@@ -1,0 +1,26 @@
+class pattern_generator;
+  rand int pattern[8];
+  constraint c1{
+    pattern[7]==79;
+    pattern[6]==69;
+    pattern[5]==59;
+    pattern[4]==49;
+    pattern[3]==39;
+    pattern[2]==29;
+    pattern[1]==19;
+    pattern[0]==9;
+    
+  }
+endclass
+module pat_gen_tb;
+  int pattern[8];
+  initial
+    begin
+      pattern_generator generator=new();
+      generator.randomize();
+       pattern = generator.pattern;
+      $monitor("pattern = %p",pattern);
+      #20;
+      $finish;
+    end
+endmodule
